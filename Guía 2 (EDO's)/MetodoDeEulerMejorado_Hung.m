@@ -20,10 +20,11 @@ end
  h=(tf-t0)/M;
  T=t0:h:tf; 
  cant = length(T);
- Y = zeros(1,cant); %se necesita establecesr una columna y una n
+ Y = zeros(1,cant); %se necesita establecesr una columna y una n filas
  Y(1)=y0;
  for tk = 1:M
-    Y(tk+1)=Y(tk)+h*feval(Funcion,T(tk),Y(tk));
+    fk=feval(Funcion,T(tk),Y(tk));
+    Y(tk+1)=Y(tk)+h/2*(fk+feval(Funcion,T(tk+1),Y(tk)));
  end
  Salida=[T' Y'];
 
