@@ -20,8 +20,20 @@ B6b=[-10,4,2,5]';
 %Foward_Sustitution(Aa,Ba); 
 
 %Ejercicio 8
+A8mat=[1,1,1;1,2,4;1,3,9]; 
+A8resul=[4,7,14]';
+
+Triang_Gauss_pessana(A8mat,A8resul)
+Triangularizacion_Inferior_gausseana(A8mat,A8resul)
+
 A8c=[1,2,0,-1;2,3,-1,0;0,4,2,-5;5,5,2,-4];
 B8c=[9,9,26,32]';
 
-Triang_Gauss_pessana(A8c,B8c)
-Triangularizacion_Inferior_gausseana(A8c,B8c)
+%Triang_Gauss_pessana(A8c,B8c)
+%Triangularizacion_Inferior_gausseana(A8c,B8c)
+
+%Polinomio 2x^4 -x^3 + 3x^2 - 8 p4(8) = 30
+P4 = [2 -1 3 1 -8];
+%Polinomio(P4,2)
+
+

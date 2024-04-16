@@ -207,15 +207,15 @@ xlabel('t (s)');
 ylabel('Roja Aproximada; Azul Real')
 title('M=20');
 %}
-%------------------------ Ejercio 13 a ------------------------------------
-%{
+%------------------------ Ejercio 13 ------------------------------------
+
 t0=0;
 tF=1;
 y0=[-2.7 2.8]; 
 
 M1=200;
 
-[T,X] = Runge_kutta_Matricial('Ec_Dif_13a',t0,tF,y0,M1);
+[T,X] = Runge_kutta_Matricial('Ec_Dif_13',t0,tF,y0,M1);
 t= T;    % vector de tiempo
 x_t = X(:,1);  % solución x(t)
 y_t = X(:,2);  % solución y(t)
@@ -225,106 +225,13 @@ figure(1);
 plot(t,y_t)
 grid
 xlabel('t (s)');
-ylabel('y')
-title('M=200');
-
-figure(1);
-plot(t,x_t)
-grid
-xlabel('t (s)');
-ylabel('X')
-title('M=200');
-%}
-
-%------------------------ Ejercio 13 b ------------------------------------
-%{
-t0=0;
-tF=2;
-y0=[0.2 0.5]; 
-
-M1=200;
-
-[T,X] = Runge_kutta_Matricial('Ec_Dif_13b',t0,tF,y0,M1);
-t= T;    % vector de tiempo
-x_t = X(:,1);  % solución x(t)
-y_t = X(:,2);  % solución y(t)
-
+ylabel('Roja Aproximada; Azul Real')
+title('M=20');
 
 figure(1);
 plot(t,y_t)
 grid
 xlabel('t (s)');
-ylabel('y')
-title('M=200');
+ylabel('Roja Aproximada; Azul Real')
+title('M=20');
 
-figure(2);
-plot(t,x_t)
-grid
-xlabel('t (s)');
-ylabel('X')
-title('M=200');
-%}
-
-%------------------------ Ejercio 13 c ------------------------------------
-%{
-t0=0;
-tF=12;
-y0=[2 3]; 
-
-M1=200;
-
-[T,X] = Runge_kutta_Matricial('Ec_Dif_13c',t0,tF,y0,M1);
-t= T;    % vector de tiempo
-x_t = X(:,1);  % solución x(t)
-y_t = X(:,2);  % solución y(t)
-
-
-figure(1);
-plot(t,y_t)
-grid
-xlabel('t (s)');
-ylabel('y')
-title('M=200');
-
-figure(2);
-plot(t,x_t)
-grid
-xlabel('t (s)');
-ylabel('X')
-title('M=200');
-%}
-
-%------------------------ Ejercio 14 ------------------------------------
-
-t0=0;
-tF=10;
-y0=[3000 120]; 
-
-M1=100;
-
-[T,X] = Runge_kutta_Matricial('Ec_Dif_14',t0,tF,y0,M1);
-t= T;    % vector de tiempo
-x_t = X(:,1);  % solución x(t)
-y_t = X(:,2);  % solución y(t)
-
-
-figure(1);
-plot(t,y_t)
-grid
-xlabel('t (s)');
-ylabel('y')
-title('Zorros');
-
-figure(2);
-plot(t,x_t)
-grid
-xlabel('t (s)');
-ylabel('X')
-title('Conejos');
-
-figure(3);
-plot(x_t,y_t)
-grid
-xlabel('çonejos(t)');
-ylabel('zorros(t)')
-title('Conejos vs zorros');

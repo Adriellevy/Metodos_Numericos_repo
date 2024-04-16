@@ -1,3 +1,12 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Ejercicio 1 guía 1 
+%
+%Sustitucion hacia atras de una matriz para obtener los valores Resultados
+%  | a1 a2 a3 a4 || R1 |
+%  | 0  b1 b2 b3 || R2 |
+%  | 0   0 c1 c2 || R3 |
+%  | 0   0  0 d1 || R4 |
+
 function Xn=Back_Sustitution(Matriz_de_Coeficientes,Resultados)
     Dimensiones = size(Matriz_de_Coeficientes);
     Filas = Dimensiones(1);

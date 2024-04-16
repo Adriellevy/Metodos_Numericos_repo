@@ -1,3 +1,13 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%Ejercicio 4 guía 1
+%%%
+%%%  | a1  0   0 0  || R1 |
+%%%  | b1  b2  0 0  || R2 |
+%%%  | c1  c2 c3 0  || R3 |
+%%%  | d1  d2 d3 d4 || R4 |
+%%%
+%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function Xn=Foward_Sustitution(Matriz_de_Coeficientes,Resultados)
    dimensiones = size(Matriz_de_Coeficientes);
    Filas = dimensiones(1); 
