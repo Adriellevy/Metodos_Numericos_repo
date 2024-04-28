@@ -14,7 +14,6 @@ SXY=(X-promediox)'*(Y-promedioy); % suma de productos cruzados de X e Y
 
 Pendiente = SXY/SX2; % Pendiente del ajuste lineal
 OrAlOr = promedioy - Pendiente*promediox; % Ordenada del ajuste lineal
-Indice_de_correlacion= SXY/sqrt(SX2*SY2); % Coeficiente de correlación de la recta
+Indice_de_correlacion= SXY/sqrt(SX2*SY2); % Coeficiente de correlaci?n de la recta
 salida = [Pendiente,OrAlOr,Indice_de_correlacion];
 end
-
