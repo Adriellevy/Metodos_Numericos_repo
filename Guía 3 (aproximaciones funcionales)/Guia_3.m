@@ -39,10 +39,9 @@ clf
 clear
 
 %}
-
 %-------------------------    Ejercicio 2b (Aprox. Lineal) ------------------------
 %{
-Aplicacion del algoritmo de aproximacion lineal
+%Aplicacion del algoritmo de aproximacion lineal
 disp('Ejercicio 2B')
 Vect2bX=[-6 -2 0 2 6]';
 Vect2bY=[7 5 3 2 0]'; 
@@ -77,10 +76,9 @@ clf
 clc
 clear
 %}
-
 %-------------------------    Ejercicio 2c (Aprox. Lineal)------------------------
 %{
-    Aplicacion del algoritmo de aproximacion lineal
+%    Aplicacion del algoritmo de aproximacion lineal
     
 
 disp('Ejercicio 2c')
@@ -115,9 +113,8 @@ pause(2)
 close
 clf
 %}
-
 %-------------------------    Ejercicio 4b (Aprox. exponencial)------------------------ 
-%{    
+%{
 disp('Ejercicio 4a')
 x = [linspace(0, 2, 100)]'; %genero un espacio de prueba
 y = exp(x);
@@ -138,16 +135,15 @@ ylabel('y');
 legend('Funcion real', ['Funcion Aproximada, Error cuadratico medio: ',num2str(resul(3))]);
 hold off
 %}
-
 %-------------------------    Ejercicio 4d (aprox. Potencial) ------------------------
 %{
-%    Aplicacion de La Aproximacion Potencial
 
+%    Aplicacion de La Aproximacion Potencial
 disp('Ejercicio 4d')
-x = [linspace(-50, 50, 100)]'; %genero un espacio de prueba
+x = [linspace(0.001, 50, 100)]'; %genero un espacio de prueba
 y = x.^3;
 
-resul = Aproximacion_Potencial(x,y);
+resul = Aproximacion_Potencial(x,y)
 
 ypredict = exp(resul(2))*(x.^resul(1));
 disp(resul(1))
@@ -155,6 +151,7 @@ disp(resul(1))
 plot(x, y, 'o');
 hold on
 plot(x, ypredict,'r'); 
+grid
 
 % Agregar etiquetas a los ejes
 xlabel('x');
@@ -167,9 +164,9 @@ hold off
 %-------------------------    Ejercicio 4c (aprox. Lineal Inverso) ------------------------
 %{
 
-%    Aplicacion de La Aproximacion Potencial
+%    Aplicacion de La Aproximacion Lineal inversa 1/(ax +b)
 disp('Ejercicio 4d')
-x = [linspace(3, 50, 100)]'; %genero un espacio de prueba
+x = [linspace(-50, 50, 100)]'; %genero un espacio de prueba
 y = 1./x;
 
 resul = Aproximacion_Inversamente_Lineal(x,y);
@@ -189,18 +186,16 @@ ylabel('y');
 legend('Funcion real', ['Funcion Aproximada, Error cuadratico medio: ',num2str(resul(3))]);
 hold off
 %}
-
-%-------------------------    Ejercicio 4c (aprox. de raylight) ------------------------
-
+%-------------------------    Ejercicio 4d (aprox. de raylight) ------------------------
 %{
-%    Aplicacion de La Aproximacion Potencial
+%    Aplicacion de La Aproximacion rayleight a*X*e^(-bx)
 disp('Ejercicio 4d')
-x = [linspace(1, 5, 100)]'; %genero un espacio de prueba
-y = x.*exp(x);
+x = [linspace(0.001, 5, 100)]'; %genero un espacio de prueba
+y = x.*exp(-x);
 
 resul = Aproximacion_Reyleigh(x,y);
 
-ypredict = exp(resul(2)).*exp(-resul(1).*x);
+ypredict = exp(resul(2)).*x.*exp(resul(1).*x);
 disp(resul(1))
 % Graficar los puntos
 plot(x, y, 'o');
@@ -215,23 +210,22 @@ ylabel('y');
 legend('Funcion real', ['Funcion Aproximada, Error cuadratico medio: ',num2str(resul(3))]);
 hold off
 %}
-
-%-------------------------    Ejercicio 6 (aprox. Polinomial) ------------------------
-
+%-------------------------    Ejercicio 5 (aprox. Polinomial planetas) ------------------------
 %{
-%    Aplicacion de La Aproximacion Potencial
-disp('Ejercicio 4d')
-x = [linspace(1, 5, 100)]'; %genero un espacio de prueba
-y = x.*exp(x);
+%    Aplicacion de La Aproximacion Potencial planetas
+disp('Ejercicio 5')
+DSol= [57.59 108.11 149.57 227.84 778.14 1427.0 2870.3 4499.9 5909.0]';
 
-resul = Aproximacion_Reyleigh(x,y);
+PSid = [87.99 224.7 365.26 686.98 4332.4 10759 30684 60188 90710]'; 
 
-ypredict = exp(resul(2)).*exp(-resul(1).*x);
+resul = Aproximacion_Potencial(DSol,PSid);
+ypredict = exp(resul(2)).*(DSol.^resul(1));
+
 disp(resul(1))
 % Graficar los puntos
-plot(x, y, 'o');
+plot(DSol, PSid, 'o');
 hold on
-plot(x, ypredict,'r'); 
+plot(DSol, ypredict,'r'); 
 
 % Agregar etiquetas a los ejes
 xlabel('x');
@@ -240,4 +234,98 @@ ylabel('y');
 % Mostrar la leyenda
 legend('Funcion real', ['Funcion Aproximada, Error cuadratico medio: ',num2str(resul(3))]);
 hold off
+%}
+%-------------------------    Ejercicio 6 y 7 (aprox. Aproximacion Polinomial y minimos Cuadrados) --------------
+%{
+%    Aplicacion de La Aproximacion Polinomial
+disp('Ejercicio 6 y 7')
+x=[0 0.15 0.31 0.5 0.6 0.75]';
+y=[1.0 1.004 1.031 1.117 1.223 1.422]'; 
+dx=0.01;
+X=min(x):dx:max(x);
+ypredict=0;
+Cols=['b' 'g' 'm' 'k'];
+M =[1,2,3,4]';
+
+%Grafico la recta
+plot(x, y, 'rO');
+hold on 
+for i=1:length(M)
+    Coeficientes = Aproximacion_Polinomial(x,y,M(i));
+    ypredict(1)=0;
+    for j = 1:length(x)
+        yEval(j)=Eval_Polinomio_Rapida_Pessana(x(j),Coeficientes);
+    end  
+
+    % Graficar los polinomios    
+    plot(x,yEval,Cols(i)); 
+    hold on
+end
+disp(yEval)
+
+
+
+% Agregar etiquetas a los ejes
+xlabel('x');
+ylabel('y');
+
+% Mostrar la leyenda
+%legend('Funcion real', ['Funcion Aproximada, Error cuadratico medio: ',num2str(resul(3))]);
+hold off
+%}
+%-------------------------    Ejercicio 10 (aprox. Aproximacion STF) --------------
+%{
+%    Aplicacion de La Aproximacion por serie trigonometrica de fourrier
+disp('Ejercicio 10')
+t=0:11;
+y1=[18.9 18.9 18.3 17.7 17.2 16.7 16.1 15.5 15.5 15.5 15.0 14.4]'; 
+y2=[14.4 14.4 14.4 14.4 13.8 13.8 13.8 14.4 15.5 17.7 19.4 20.0]';
+M =7;
+[T1,Y_STF1]=Aproximacion_Serie_Trig_Fourier(t,y1,M);
+[T2,Y_STF2]=Aproximacion_Serie_Trig_Fourier(t,y2,M);
+
+
+plot(t,y1,'ro',T1,Y_STF1,'g')
+hold on
+plot(t,y2,'bo',T2,Y_STF2,'r')
+
+%%plot(T,Y_STF)
+% Agregar etiquetas a los ejes
+xlabel('x');
+ylabel('y');
+
+% Mostrar la leyenda
+%legend('Funcion real', ['Funcion Aproximada, Error cuadratico medio: ',num2str(resul(3))]);
+hold off
+%}
+%-------------------------    Ejercicio 11 (aprox. Aproximacion STF) --------------
+
+%    Aplicacion de La Aproximacion por serie trigonometrica de fourrier
+clear
+clc
+
+T = 5;
+Per = 3;
+Dt = 0.01;          % Intervalo de Tiempo
+w0 = 2*pi/T;
+t=0:Dt:Per*T-Dt;      % Eje temporal discreto
+y_t = 5*(sawtooth(w0*t)+1)/4;        % Pulso Triangular
+M=[5 20 50 200];  % Límites de suma a desarrollar
+Cols=['r' 'b' 'c' 'm' 'k'];  % Colores de graficado
+H=figure(1);
+set(H,'NumberTitle','off','Menubar','none',...
+    'name','Serie de Fourier de Señal Rectangular',...
+    'position',[20 30 1000 700]);
+plot(t,y_t,Cols(1));
+hold on;
+for i=1:length(M)
+    [T,Ya]=Ajuste_Serie_Trig_Fourier(t',y_t',M(i));
+    plot(T,Ya,Cols(i+1));
+    hold on;
+end
+xlabel('t');
+ylabel('y(t)');
+title('Serie Trigonométrica de Fourier de Pulso Triangular')
+legend('y(t)','M=5','M=20','M=50','M=200');
+grid
 %}

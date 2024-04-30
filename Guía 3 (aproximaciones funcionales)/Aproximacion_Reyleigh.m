@@ -1,7 +1,7 @@
 function salida = Aproximacion_Reyleigh(X,Y)
 %APROXIMACION_POLINOMICA Summary of this function goes here
 %   Detailed explanation goes here
-y=log(X./Y);
+y=log(Y./X);
 Resultados=Aproximacion_Lineal(X,y);
 Pendiente = Resultados(1); 
 OrAlOr=Resultados(2); 
