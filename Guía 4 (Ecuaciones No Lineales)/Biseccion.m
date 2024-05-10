@@ -7,7 +7,8 @@ function [ output_args ] = Biseccion(F,intervalos,N,Truncamiento)
 
 A=intervalos(1); 
 B=intervalos(2); 
-k=0
+k=0;
+E = Truncamiento +1;
 while (k<N && E<Truncamiento)
     C=(A+B)/2; 
     E=feval(F,C);
