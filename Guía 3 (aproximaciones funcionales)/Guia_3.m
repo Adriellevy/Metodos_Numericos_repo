@@ -280,15 +280,19 @@ disp('Ejercicio 10')
 t=0:11;
 y1=[18.9 18.9 18.3 17.7 17.2 16.7 16.1 15.5 15.5 15.5 15.0 14.4]'; 
 y2=[14.4 14.4 14.4 14.4 13.8 13.8 13.8 14.4 15.5 17.7 19.4 20.0]';
-M =7;
+y3=[10.4 8.4 7.4 3.4 15.8 17.8 19.8 10.4 10.5 19.7 10.4 11.0]';
+M =6;
 [T1,Y_STF1]=Aproximacion_Serie_Trig_Fourier(t,y1,M);
 [T2,Y_STF2]=Aproximacion_Serie_Trig_Fourier(t,y2,M);
+[T3,Y_STF3]=Aproximacion_Serie_Trig_Fourier(t,y3,M);
 
 
 plot(t,y1,'ro',T1,Y_STF1,'g')
 hold on
 plot(t,y2,'bo',T2,Y_STF2,'r')
+plot(t,y3,'yo',T3,Y_STF3,'k')
 
+title('Serie Trigonométrica de Fourier de set de datos')
 %%plot(T,Y_STF)
 % Agregar etiquetas a los ejes
 xlabel('x');
@@ -301,6 +305,7 @@ hold off
 %-------------------------    Ejercicio 11 (aprox. Aproximacion STF) --------------
 
 %    Aplicacion de La Aproximacion por serie trigonometrica de fourrier
+%{
 clear
 clc
 
@@ -319,7 +324,7 @@ set(H,'NumberTitle','off','Menubar','none',...
 plot(t,y_t,Cols(1));
 hold on;
 for i=1:length(M)
-    [T,Ya]=Ajuste_Serie_Trig_Fourier(t',y_t',M(i));
+    [T,Ya]=Aproximacion_Serie_Trig_Fourier(t',y_t',M(i));
     plot(T,Ya,Cols(i+1));
     hold on;
 end

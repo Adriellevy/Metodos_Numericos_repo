@@ -34,6 +34,7 @@ n=0:N-1;            % Discretización natural del eje temporal
 Matriz=zeros(M,N);
 for k=1:M
     ak = (2/N)* cos (2*pi*n*k/N)*Y;
+    disp(ak)    
     bk = (2/N)* sin (2*pi*n*k/N)*Y;
     Matriz(k,:)= ak * cos(2*pi*n*k/N) + bk * sin(2*pi*n*k/N);
 end
