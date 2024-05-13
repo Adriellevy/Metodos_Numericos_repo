@@ -1,9 +1,8 @@
-function [ output_args ] = Biseccion(F,intervalos,N,Truncamiento)
-%BISECCION Summary of this function goes here
-%   Detailed explanation goes here
+function raiz = Biseccion(F,intervalos,N,Truncamiento)
 %   F es la Funcion a evaluar
 %   Intervalos es un vector con dos datos a0 y b0 (en que region buscar la raiz)
 %   N cantidad de datos 
+%   raiz Valor que tiene ck cuando se trunca la funcion
 
 A=intervalos(1); 
 B=intervalos(2); 
@@ -23,6 +22,6 @@ while (k<N && E<Truncamiento)
     k=k+1;
         
 end
-
+if(C)raiz = C;
 end
 
