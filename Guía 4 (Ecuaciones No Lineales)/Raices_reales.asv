@@ -1,0 +1,40 @@
+function [r,err,y_k]= Raices_reales(F,a,b,dx,Truncamiento)
+%RAICES REALES Summary of this function goes here
+%   Detailed explanation goes here
+%   F = funcion dada
+%   a = valor inicial donde comenzar a buscar la raiz 
+%   b = valor final donde comenzar a buscar la raiz
+
+N = (feval(F,a)-feval(F,b))/N; 
+
+r=zeros(1);
+y_k=zeros(1); % Initialize y_k
+b;
+xk=a;
+k=0;
+r=zeros(1);
+E = feval(F,xk);
+while(Truncamiento<abs(E) && k<N)
+    
+    fkA=feval(F,xk); %fka es el valfor fk-1 de la funcion (antes de sumarle xk)
+    xk=xk+dx;
+    fk=feval(F,xk);
+    fkD=feval(F,xk+dx); %fka es el valor fk+1 de la funcion (despues de sumarle xk)
+    
+    E = feval(F,xk);
+    
+    if(fkA*fk<0)
+        disp('opcion1')
+       r(end+1)=xk-dx/2;
+       y_k(end+1)=feval(F,r(end));
+    elseif((fkD-fk)*(fk-fkA)<0 || abs(fk)<Truncamiento)
+        disp('opcion2')
+       r(end+1)=xk;
+       y_k(end+1)=feval(F,r(end));
+    end
+   
+    E=abs(fk); 
+    k=k+1;
+end
+err=E;
+end

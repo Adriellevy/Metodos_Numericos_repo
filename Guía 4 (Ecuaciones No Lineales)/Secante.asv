@@ -1,0 +1,15 @@
+function [Aprox,Error,NumIteracciones,y_f] = Secante(F,p0,p1,InteracionMaxima,Truncamiento)
+    pk(1)=p0; 
+    pk(2)=p1;
+    
+    whilefor k=1:IteracionMaxima
+        num = pk(k)-pk(k+1)*feval(F,pk(k)); 
+        den = feval(f,pk(k))-feval(f,pk(k-1)); 
+        pk(k+1)=pk(k)-(num/den); 
+        
+        if(feval(F,pk(k+1))<Truncamiento
+        
+        end
+    end
+end
+

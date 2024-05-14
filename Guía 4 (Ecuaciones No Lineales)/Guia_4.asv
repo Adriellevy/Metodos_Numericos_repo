@@ -56,8 +56,8 @@ disp('Ejercicio 4): k   ak   ck   bk   f(ck)');
 disp(M)
 %}
 
-%-----------------------------Ejercicio 8 --------------------------
-%{
+%-----------------------------Ejercicio 5 --------------------------
+
 epsilon = 0.000000000000001;
 Max=4000;
 dx=0.001;
@@ -66,7 +66,7 @@ xf=2;
 
 
 % Define the range of the variable
-x = x0:0.0001:xf;
+x = x0:0.0001:2;
 
 % Call the function
 y = Funcion_8(x);
@@ -79,33 +79,6 @@ xlabel('x');
 ylabel('y');
 grid on;
 hold on
-[r,err,y_k] = Raices_reales('Funcion_8',x0,xf,N,epsilon); 
-plot(r,zeros(size(r)),'ro'); 
-%}
-
-%-----------------------------Ejercicio 11 --------------------------
-
-epsilon = 0.000000000000001;
-Max=4000;
-dx=0.001;
-x0=-2;
-xf=2;
-
-
-% Define the range of the variable
-x = x0:0.0001:xf;
-
-% Call the function
-y = Funcion_8(x);
-
-% Create the plot
-figure;
-plot(x, y);
-title('Plot of the function');
-xlabel('x');
-ylabel('y');
-grid on;
-hold on
-[r,err,y_k] = Raices_reales('Funcion_8',x0,xf,N,epsilon); 
+[r,err,y_k] = Raices_reales('Funcion_8',a,b,dx,epsilon); 
 plot(r,zeros(size(r)),'ro'); 
 %}
